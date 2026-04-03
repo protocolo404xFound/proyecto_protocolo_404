@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio de Proyectos - Número Secreto</title>
+    <style>
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7f6;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+            position: relative;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #1abc9c;
+        }
+
+        
+        .submenu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #34495e;
+            padding: 10px;
+            border-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            width: 150px;
+        }
+
+        nav ul li:hover .submenu {
+            display: block;
+        }
+
+        .submenu li {
+            margin: 5px 0;
+            display: block;
+        }
+
+        .submenu li a {
+            font-weight: normal;
+            font-size: 0.9rem;
+        }
+
+        
+        main {
+            flex: 1;
+            padding: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        
+        .game-container {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            border-radius: 12px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            border: 2px solid rgba(255,255,255,0.1);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .description {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .input-group {
+            margin-bottom: 25px;
+        }
+
+        
+        input[type="number"] {
+            font-size: 1.2rem;
+            padding: 12px 20px;
+            border-radius: 8px;
+            border: none;
+            width: 80%;
+            max-width: 250px;
+            text-align: center;
+            outline: none;
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            font-size: 1.1rem;
+            padding: 12px 24px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.1s ease;
+            text-transform: uppercase;
+        }
+
+        .btn:active {
+            transform: scale(0.97);
+        }
+
+        
+        .btn-check {
+            background-color: #27ae60;
+            color: white;
+        }
+
+        .btn-check:hover {
+            background-color: #2ecc71;
+        }
+
+        
+        .btn-reset {
+            background-color: #e74c3c;
+            color: white;
+        }
+
+        .btn-reset:hover {
+            background-color: #c0392b;
+        }
+
+        
+        #message-area {
+            margin-top: 30px;
+            min-height: 60px; 
+        }
+
+        .message {
+            font-size: 1.3rem;
+            font-weight: bold;
+            padding: 15px;
+            border-radius: 8px;
+            display: inline-block;
+        }
+
+        .msg-correct {
+            background-color: #2ecc71;
+            color: #fff;
+        }
+
+        .msg-hint {
+            background-color: #f39c12;
+            color: #fff;
+        }
+
+        
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: #ecf0f1;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+
+        
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            .description {
+                font-size: 1rem;
+            }
+            .game-container {
+                padding: 20px;
+            }
+            .btn {
+                font-size: 1rem;
+                padding: 10px 20px;
+                width: 100%; 
+                max-width: 250px;
+            }
+            nav ul li {
+                margin: 0 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#">Inicio</a></li>
+                <li>
+                    <a href="#">Mis Proyectos ▾</a>
+                    <ul class="submenu">
+                        <li><a href="#juego">Número Secreto</a></li>
+                        <li><a href="#" onclick="alert('Este sería el enlace al Proyecto Final (No implementado en este ejemplo)')">Proyecto Final</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="juego" class="game-container">
+            <h1>Juego del número secreto!</h1>
+            <p class="description">Indica un número del 1 al 10</p>
+
+            <div class="input-group">
+                <input type="number" id="guessInput" min="1" max="10" placeholder="Ej: 5">
+            </div>
+
+            <div class="button-group">
+                <button class="btn btn-check" onclick="checkGuess()">Intentar</button>
+                <button class="btn btn-reset" onclick="resetGame()">Nuevo Juego</button>
+            </div>
+
+            <div id="message-area">
+                </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Portafolio de Proyectos - Ejercicio Etapa 2</p>
+    </footer>
+
+    <script>
+        // Variables globales
+        let secretNumber;
+        let attempts;
+        const maxNumber = 10; // Rango del 1 al 10
+
+        // Elementos del DOM
+        const inputElement = document.getElementById('guessInput');
+        const messageArea = document.getElementById('message-area');
+
+        // Función para inicializar o reiniciar el juego
+        function resetGame() {
+            // Generar un número aleatorio del 1 al maxNumber (10)
+            secretNumber = Math.floor(Math.random() * maxNumber) + 1;
+            attempts = 0; // Reiniciar contador de intentos (Requisito #7)
+            
+            // Requisito #8: Limpiar el campo de entrada
+            inputElement.value = '';
+            inputElement.disabled = false; // Asegurar que el input esté habilitado
+            
+            // Limpiar área de mensajes
+            messageArea.innerHTML = '';
+            
+            // Focar automáticamente el campo de entrada
+            inputElement.focus();
+            
+            console.log("Nuevo juego iniciado. Número secreto:", secretNumber); // Para depuración
+        }
+
+        // Función que se ejecuta al presionar "Intentar"
+        function checkGuess() {
+            const userGuess = inputElement.value; // Obtener el valor como texto primero
+
+            // Requisito #3: Validar si el campo está vacío
+            if (userGuess === '') {
+                alert("Por favor, ingresa un número antes de intentar."); // Alerta solicitando ingresar número
+                inputElement.focus();
+                return; // Detener la ejecución
+            }
+
+            // Convertir a número entero
+            const guess = parseInt(userGuess);
+            attempts++; // Requisito #7: Contar el intento
+
+            // Requisito #8: Limpiar el campo al ingresar un número
+            inputElement.value = '';
+            inputElement.focus();
+
+            // Lógica de comparación
+            if (guess === secretNumber) {
+                // Requisito #6: El usuario acertó
+                const attemptText = (attempts === 1) ? "intento" : "intentos"; // Requisito #7: singular/plural
+                showMessage(`msg-correct`, `¡Felicitaciones! Acertaste el número secreto (${secretNumber}) en ${attempts} ${attemptText}.`);
+                
+                // Deshabilitar input y botón de intentar para forzar nuevo juego
+                inputElement.disabled = true;
+                
+            } else if (guess > secretNumber) {
+                // Requisito #4: El número secreto es mayor al que se insertó
+                // (Nota: La redacción de la guía es "si el número secreto es mayor", 
+                // pero la lógica es: si lo que ingresó el usuario es MAYOR que el secreto).
+                // Mi mensaje refleja lo que el usuario necesita saber: "El número secreto es menor".
+                showMessage(`msg-hint`, `El número secreto es menor que ${guess}. ¡Sigue intentando!`);
+                
+            } else {
+                // Requisito #5: El número secreto es menor al que se insertó
+                // (Nota: Igual que arriba, ajusto el mensaje para que sea útil al usuario).
+                showMessage(`msg-hint`, `El número secreto es mayor que ${guess}. ¡Sigue intentando!`);
+            }
+        }
+
+        // Función auxiliar para mostrar mensajes en pantalla
+        function showMessage(typeClass, text) {
+            messageArea.innerHTML = `<p class="message ${typeClass}">${text}</p>`;
+        }
+
+        // Permitir presionar 'Enter' en el campo de entrada
+        inputElement.addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                checkGuess();
+            }
+        });
+
+        // Iniciar el juego por primera vez al cargar la página
+        window.onload = resetGame;
+
+    </script>
+</body>
+</html>
